@@ -1,3 +1,6 @@
+##
+# Utility methods for escaping and prettifying HTML, and for date formatting.
+#
 class CGI
   @@accept_charset="UTF-8" unless defined?(@@accept_charset)
   # URL-encode a string.
@@ -20,6 +23,7 @@ class CGI
     str.valid_encoding? ? str : str.force_encoding(string.encoding)
   end
 
+  # The set of special characters and their escaped values
   TABLE_FOR_ESCAPE_HTML__ = {
     '&' => '&amp;',
     '"' => '&quot;',
@@ -84,12 +88,12 @@ class CGI
     end
   end
 
-  # Synonym for CGI.escapeHTML.
+  # Synonym for CGI::escapeHTML(str)
   def CGI::escape_html(str)
     escapeHTML(str)
   end
-
-  # Synonym for CGI.unescapeHTML.
+  
+  # Synonym for CGI::unescapeHTML(str)
   def CGI::unescape_html(str)
     unescapeHTML(str)
   end
@@ -139,12 +143,12 @@ class CGI
     end
   end
 
-  # Synonym for CGI.escapeElement.
+  # Synonym for CGI::escapeElement(str)
   def CGI::escape_element(str)
     escapeElement(str)
   end
-
-  # Synonym for CGI.unescapeElement.
+  
+  # Synonym for CGI::unescapeElement(str)
   def CGI::unescape_element(str)
     unescapeElement(str)
   end

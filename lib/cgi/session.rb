@@ -12,7 +12,7 @@
 require 'cgi'
 require 'tmpdir'
 
-class CGI
+class CGI #:nodoc:
 
   # == Overview
   #

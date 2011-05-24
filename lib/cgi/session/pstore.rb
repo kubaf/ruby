@@ -12,8 +12,8 @@
 require 'cgi/session'
 require 'pstore'
 
-class CGI
-  class Session
+class CGI #:nodoc:
+  class Session #:nodoc:
     # PStore-based session storage class.
     #
     # This builds upon the top-level PStore class provided by the

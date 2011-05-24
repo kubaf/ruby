@@ -1,3 +1,6 @@
+##
+# HTML element generating methods
+#
 class CGI
   # Base module for HTML-generation mixins.
   #
