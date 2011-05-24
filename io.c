@@ -4458,6 +4458,7 @@ rb_io_extract_modeenc(VALUE *vmode_p, VALUE *vperm_p, VALUE opthash,
     /* Set to defaults */
     rb_io_ext_int_to_encs(NULL, NULL, &enc, &enc2);
 
+  vmode_handle:
     if (NIL_P(vmode)) {
         fmode = FMODE_READABLE | DEFAULT_TEXTMODE;
         oflags = O_RDONLY;
@@ -4470,7 +4471,6 @@ rb_io_extract_modeenc(VALUE *vmode_p, VALUE *vperm_p, VALUE opthash,
     else {
         const char *p;
 
-      vmode_handle:
         SafeStringValue(vmode);
         p = StringValueCStr(vmode);
         fmode = rb_io_modestr_fmode(p);
@@ -10572,10 +10572,6 @@ Init_IO(void)
 #ifdef O_DIRECT
     /*  Try to minimize cache effects of the I/O to and from this file. */
     rb_file_const("DIRECT", INT2FIX(O_DIRECT));
-#endif
-#ifdef O_CLOEXEC
-    /* enable close-on-exec flag */
-    rb_file_const("CLOEXEC", INT2FIX(O_CLOEXEC)); /* Linux, POSIX-2008. */
 #endif
 
     sym_mode = ID2SYM(rb_intern("mode"));
